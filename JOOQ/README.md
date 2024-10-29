@@ -22,6 +22,12 @@ I am now following https://www.jooq.org/doc/latest/manual/getting-started/tutori
 
 Some of the codegen packages were renamed between versions, so I changed the driver package name in the pom file.
 
+Debugging
+- Delete the data folder / volume here: C:\Users\SamSnowball\Desktop\Projects\jooqmysqlvolume
+- Recreate the container
+
+Note the logs say root@localhost is created with an empty password so you can't login via adminer, not an issue for now.
+
 This is the contents of the schema.sql file we pass in as a volume:
 
 ```
