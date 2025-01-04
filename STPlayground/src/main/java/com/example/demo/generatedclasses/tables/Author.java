@@ -6,15 +6,21 @@ package com.example.demo.generatedclasses.tables;
 
 import com.example.demo.generatedclasses.Keys;
 import com.example.demo.generatedclasses.Mydatabase;
+import com.example.demo.generatedclasses.tables.Book.BookPath;
 import com.example.demo.generatedclasses.tables.records.AuthorRecord;
 
 import java.util.Collection;
 
 import org.jooq.Condition;
 import org.jooq.Field;
+import org.jooq.ForeignKey;
+import org.jooq.Identity;
+import org.jooq.InverseForeignKey;
 import org.jooq.Name;
+import org.jooq.Path;
 import org.jooq.PlainSQL;
 import org.jooq.QueryPart;
+import org.jooq.Record;
 import org.jooq.SQL;
 import org.jooq.Schema;
 import org.jooq.Select;
@@ -52,7 +58,7 @@ public class Author extends TableImpl<AuthorRecord> {
     /**
      * The column <code>mydatabase.author.id</code>.
      */
-    public final TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>mydatabase.author.first_name</code>.
@@ -93,14 +99,65 @@ public class Author extends TableImpl<AuthorRecord> {
         this(DSL.name("author"), null);
     }
 
+    public <O extends Record> Author(Table<O> path, ForeignKey<O, AuthorRecord> childPath, InverseForeignKey<O, AuthorRecord> parentPath) {
+        super(path, childPath, parentPath, AUTHOR);
+    }
+
+    /**
+     * A subtype implementing {@link Path} for simplified path-based joins.
+     */
+    public static class AuthorPath extends Author implements Path<AuthorRecord> {
+
+        private static final long serialVersionUID = 1L;
+        public <O extends Record> AuthorPath(Table<O> path, ForeignKey<O, AuthorRecord> childPath, InverseForeignKey<O, AuthorRecord> parentPath) {
+            super(path, childPath, parentPath);
+        }
+        private AuthorPath(Name alias, Table<AuthorRecord> aliased) {
+            super(alias, aliased);
+        }
+
+        @Override
+        public AuthorPath as(String alias) {
+            return new AuthorPath(DSL.name(alias), this);
+        }
+
+        @Override
+        public AuthorPath as(Name alias) {
+            return new AuthorPath(alias, this);
+        }
+
+        @Override
+        public AuthorPath as(Table<?> alias) {
+            return new AuthorPath(alias.getQualifiedName(), this);
+        }
+    }
+
     @Override
     public Schema getSchema() {
         return aliased() ? null : Mydatabase.MYDATABASE;
     }
 
     @Override
+    public Identity<AuthorRecord, Integer> getIdentity() {
+        return (Identity<AuthorRecord, Integer>) super.getIdentity();
+    }
+
+    @Override
     public UniqueKey<AuthorRecord> getPrimaryKey() {
         return Keys.KEY_AUTHOR_PRIMARY;
+    }
+
+    private transient BookPath _book;
+
+    /**
+     * Get the implicit to-many join path to the <code>mydatabase.book</code>
+     * table
+     */
+    public BookPath book() {
+        if (_book == null)
+            _book = new BookPath(this, null, Keys.BOOK_IBFK_1.getInverseKey());
+
+        return _book;
     }
 
     @Override

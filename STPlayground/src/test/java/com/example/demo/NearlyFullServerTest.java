@@ -10,9 +10,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+/*
+ * Nearly a full server test as by using mockMvc we lose some functionality?
+ * Things like setting headers perhaps? Lookup restTemplate vs mockMvc.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class NoServerTest {
+public class NearlyFullServerTest {
     
     @Autowired
 	private MockMvc mockMvc;

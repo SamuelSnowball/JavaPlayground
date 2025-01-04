@@ -5,6 +5,7 @@ package com.example.demo.generatedclasses;
 
 
 import com.example.demo.generatedclasses.tables.Author;
+import com.example.demo.generatedclasses.tables.Book;
 
 
 /**
@@ -17,4 +18,9 @@ public class Tables {
      * The table <code>mydatabase.author</code>.
      */
     public static final Author AUTHOR = Author.AUTHOR;
+
+    /**
+     * The table <code>mydatabase.book</code>.
+     */
+    public static final Book BOOK = Book.BOOK;
 }

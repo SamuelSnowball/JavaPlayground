@@ -5,8 +5,11 @@ package com.example.demo.generatedclasses;
 
 
 import com.example.demo.generatedclasses.tables.Author;
+import com.example.demo.generatedclasses.tables.Book;
 import com.example.demo.generatedclasses.tables.records.AuthorRecord;
+import com.example.demo.generatedclasses.tables.records.BookRecord;
 
+import org.jooq.ForeignKey;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
@@ -25,4 +28,11 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AuthorRecord> KEY_AUTHOR_PRIMARY = Internal.createUniqueKey(Author.AUTHOR, DSL.name("KEY_author_PRIMARY"), new TableField[] { Author.AUTHOR.ID }, true);
+    public static final UniqueKey<BookRecord> KEY_BOOK_PRIMARY = Internal.createUniqueKey(Book.BOOK, DSL.name("KEY_book_PRIMARY"), new TableField[] { Book.BOOK.ID }, true);
+
+    // -------------------------------------------------------------------------
+    // FOREIGN KEY definitions
+    // -------------------------------------------------------------------------
+
+    public static final ForeignKey<BookRecord, AuthorRecord> BOOK_IBFK_1 = Internal.createForeignKey(Book.BOOK, DSL.name("book_ibfk_1"), new TableField[] { Book.BOOK.AUTHOR_ID }, Keys.KEY_AUTHOR_PRIMARY, new TableField[] { Author.AUTHOR.ID }, true);
 }
