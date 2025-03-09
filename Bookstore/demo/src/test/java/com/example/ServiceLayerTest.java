@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -10,9 +10,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.example.demo.generatedclasses.tables.pojos.Author;
-import com.example.demo.repository.AuthorRepository;
-import com.example.demo.service.AuthorService;
+import com.example.database.generatedclasses.tables.pojos.Author;
+import com.example.repository.AuthorRepository;
+import com.example.service.AuthorService;
 /*
  * I originally used data from the
  * author objects, but it's confusing as changing the data within the author objects doesn't impact the tests.

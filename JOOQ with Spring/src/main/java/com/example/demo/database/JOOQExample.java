@@ -1,6 +1,6 @@
 package com.example.demo.database;
 
-import static com.example.demo.generatedclasses.Tables.AUTHOR;
+//import static com.example.demo.generatedclasses.Tables.AUTHOR;
 
 import java.util.List;
 

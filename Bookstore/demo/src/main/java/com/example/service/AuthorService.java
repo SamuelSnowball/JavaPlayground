@@ -1,12 +1,14 @@
-package com.example.demo.service;
+package com.example.service;
+
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.demo.generatedclasses.tables.pojos.Author;
-import com.example.demo.repository.AuthorRepository;
+import com.example.database.generatedclasses.tables.pojos.Author;
+import com.example.repository.AuthorRepository;
+
 @Service
 public class AuthorService {
     private static final Logger logger = LoggerFactory.getLogger(AuthorService.class);

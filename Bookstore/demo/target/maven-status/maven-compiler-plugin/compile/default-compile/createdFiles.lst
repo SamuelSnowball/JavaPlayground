@@ -1,0 +1,12 @@
+com\example\database\generatedclasses\Keys.class
+com\example\database\generatedclasses\tables\pojos\Databasechangelog.class
+com\example\database\generatedclasses\tables\records\DatabasechangelogRecord.class
+com\example\database\generatedclasses\tables\daos\DatabasechangeloglockDao.class
+com\example\database\generatedclasses\tables\pojos\Databasechangeloglock.class
+com\example\database\generatedclasses\Indexes.class
+com\example\database\generatedclasses\tables\pojos\Book.class
+com\example\database\generatedclasses\Tables.class
+com\example\database\generatedclasses\tables\daos\BookDao.class
+com\example\database\generatedclasses\tables\pojos\Author.class
+com\example\database\generatedclasses\tables\records\DatabasechangeloglockRecord.class
+com\example\database\generatedclasses\tables\daos\AuthorDao.class

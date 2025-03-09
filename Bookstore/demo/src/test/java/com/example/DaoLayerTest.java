@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.demo.database.MyDataSource;
-import com.example.demo.repository.AuthorRepository;
+import com.example.database.MyDataSource;
+import com.example.repository.AuthorRepository;
 /*
 In the spring example they duplicate all the beans for setting up the datasource and proxy from 
 the main code, why can't I component scan my datasource file from here so no need to copy paste?

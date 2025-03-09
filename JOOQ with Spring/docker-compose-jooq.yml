@@ -11,7 +11,8 @@ services:
        - MYSQL_DATABASE=mydatabase
     volumes:
        - /c/Users/SamSnowball/Desktop/Projects/jooqmysqlvolume/data:/var/lib/mysql
-       - /c/Users/SamSnowball/Desktop/Projects/jooqmysqlvolume/init:/docker-entrypoint-initdb.d/:ro
+       # Use liquibase instead
+       #- /c/Users/SamSnowball/Desktop/Projects/jooqmysqlvolume/init:/docker-entrypoint-initdb.d/:ro
 
   admin:
     image: adminer

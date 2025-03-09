@@ -1,12 +1,12 @@
-package com.example.demo.repository;
-import static com.example.demo.generatedclasses.Tables.BOOK;
+package com.example.repository;
+import static com.example.database.generatedclasses.Tables.BOOK;
 import java.util.List;
 import org.jooq.DSLContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import com.example.demo.generatedclasses.tables.pojos.Book;
-import com.example.demo.generatedclasses.tables.records.BookRecord;
+import com.example.database.generatedclasses.tables.pojos.Book;
+import com.example.database.generatedclasses.tables.records.BookRecord;
 @Repository
 public class BookRepository { 
 	private static final Logger logger = LoggerFactory.getLogger(AuthorRepository.class);

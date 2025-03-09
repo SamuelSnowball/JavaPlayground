@@ -52,7 +52,6 @@ public class ServiceTest {
         service1.method2();
     }
 
-    /*
     @Test
     void testService2Method1(){
         service2.method1();
@@ -62,5 +61,4 @@ public class ServiceTest {
     void testService2Method2(){
         service2.method2();
     }
-    */
 }

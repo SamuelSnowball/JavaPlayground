@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;

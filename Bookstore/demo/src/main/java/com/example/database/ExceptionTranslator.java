@@ -1,4 +1,4 @@
-package com.example.demo.database;
+package com.example.database;
 import org.jooq.ExecuteContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DefaultExecuteListener;
