@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Spring specific {@link DAOImpl} override.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes" })
+@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
 @Transactional(readOnly = true)
 public abstract class AbstractSpringDAOImpl<R extends UpdatableRecord<R>, P, T> extends DAOImpl<R, P, T> {
 

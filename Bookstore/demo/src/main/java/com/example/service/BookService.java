@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.database.generatedclasses.tables.pojos.Book;
 import com.example.repository.BookRepository;
+
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class BookService {
-    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
+    
     private final BookRepository repository;
-    @Autowired
-    public BookService(BookRepository repository) {
-        this.repository = repository;
+
+    public List<? extends Book> getBooks(boolean includeAuthors){
+        return repository.getBooks(includeAuthors);
     }
-    public List<Book> getBooks(){
-        return repository.getBooks();
-    }
+    
     public Book insert(String authorId, String title){
         return repository.insert(Integer.parseInt(authorId), title);
     }

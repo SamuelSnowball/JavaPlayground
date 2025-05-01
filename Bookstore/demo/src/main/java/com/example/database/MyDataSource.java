@@ -5,6 +5,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
+import org.springframework.boot.autoconfigure.liquibase.LiquibaseDataSource;
 import org.springframework.boot.jdbc.DatabaseDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
+
 // Also contains JOOQConfiguration
 @Configuration
 @EnableTransactionManagement // Also used here as class used within tests
@@ -48,7 +51,9 @@ public class MyDataSource {
         jooqConfiguration.set(dialect);
         return jooqConfiguration;
     }
+
     @Bean
+    @LiquibaseDataSource
     public DataSource mysqlDataSource() {
         /*
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -59,7 +64,6 @@ public class MyDataSource {
         return dataSourceBuilder.build();
         */
         HikariConfig config = new HikariConfig();
-        // https://mariadb.com/kb/en/about-mariadb-connector-j/
         config.setDriverClassName(DatabaseDriver.MYSQL.getDriverClassName());
         config.setJdbcUrl("jdbc:mysql://localhost:3306/mydatabase?serverTimezone=UTC");
         config.setUsername("root");

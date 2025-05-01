@@ -10,8 +10,7 @@ services:
        - MYSQL_ROOT_PASSWORD=mysql
        - MYSQL_DATABASE=mydatabase
     volumes:
-       - /c/Users/SamSnowball/Desktop/Projects/jooqmysqlvolume/data:/var/lib/mysql
-       - /c/Users/SamSnowball/Desktop/Projects/jooqmysqlvolume/init:/docker-entrypoint-initdb.d/:ro
+       - /c/Users/samsn/Desktop/Software\ Projects/jooqmysqlvolume/data:/var/lib/mysql
   admin:
     image: adminer
     container_name: adminer

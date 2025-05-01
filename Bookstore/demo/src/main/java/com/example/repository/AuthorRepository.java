@@ -2,25 +2,29 @@ package com.example.repository;
 
 import static com.example.database.generatedclasses.Tables.AUTHOR;
 import static com.example.database.generatedclasses.Tables.BOOK;
+
 import java.util.List;
+
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
 import com.example.database.generatedclasses.tables.daos.AuthorDao;
 import com.example.database.generatedclasses.tables.pojos.Author;
 import com.example.database.generatedclasses.tables.pojos.Book;
 import com.example.database.generatedclasses.tables.records.AuthorRecord;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 @Repository
+@RequiredArgsConstructor
+@Slf4j
 public class AuthorRepository extends AuthorDao {
-	private static final Logger logger = LoggerFactory.getLogger(AuthorRepository.class);
+
     private final DSLContext create;
-    public AuthorRepository(DSLContext dslContext) {
-        this.create = dslContext;
-    }
+
     public List<Author> getByName(String firstName, String lastName){
         return create.select().from(AUTHOR)
             .where(AUTHOR.FIRST_NAME.eq(firstName))
@@ -40,7 +44,7 @@ public class AuthorRepository extends AuthorDao {
         author.setLastName(lastName);
         author.store();
         com.example.database.generatedclasses.tables.pojos.Author result = author.into(com.example.database.generatedclasses.tables.pojos.Author.class);
-        logger.info("Inserted author via create.newRecord and mapping into Author POJO, result is: " + author.toString());
+        log.info("Inserted author via create.newRecord and mapping into Author POJO, result is: " + author.toString());
         return result;
     }
     // Given an author, show me the authors information plus all of their books
@@ -62,8 +66,8 @@ public class AuthorRepository extends AuthorDao {
         //Result<BookRecord> bookRecord = record.into(BOOK);
         List<com.example.database.generatedclasses.tables.pojos.Author> authors = record.into(AUTHOR).into(Author.class);
         List<Book> books = record.into(BOOK).into(Book.class);
-        logger.info("Showing all books for the given author: " + firstName + " " + lastName);
-        authors.stream().forEach(a -> logger.info(a.toString()));
-        books.stream().forEach(b -> logger.info(b.toString()));
+        log.info("Showing all books for the given author: " + firstName + " " + lastName);
+        authors.stream().forEach(a -> log.info(a.toString()));
+        books.stream().forEach(b -> log.info(b.toString()));
     }
 }

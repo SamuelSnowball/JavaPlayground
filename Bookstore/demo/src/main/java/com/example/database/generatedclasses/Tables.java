@@ -13,7 +13,7 @@ import com.example.database.generatedclasses.tables.Databasechangeloglock;
 /**
  * Convenience access to all tables in mydatabase.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes" })
+@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
 public class Tables {
 
     /**

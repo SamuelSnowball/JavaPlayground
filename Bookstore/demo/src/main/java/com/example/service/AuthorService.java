@@ -1,22 +1,19 @@
 package com.example.service;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 import com.example.database.generatedclasses.tables.pojos.Author;
 import com.example.repository.AuthorRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AuthorService {
-    private static final Logger logger = LoggerFactory.getLogger(AuthorService.class);
     private final AuthorRepository repository;
-    @Autowired
-    public AuthorService(AuthorRepository repository) {
-        this.repository = repository;
-    }
+
     public List<Author> get(String firstName, String lastName){
         if(firstName != null && lastName != null){
             return repository.getByName(firstName, lastName);
