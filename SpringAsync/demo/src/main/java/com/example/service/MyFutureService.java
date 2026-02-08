@@ -15,7 +15,7 @@ public class MyFutureService {
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public Future<String> process() throws InterruptedException{
+    public Future<String> process() throws InterruptedException {
         return executor.submit(() -> {
             Thread.sleep(10000);
             return "Success";

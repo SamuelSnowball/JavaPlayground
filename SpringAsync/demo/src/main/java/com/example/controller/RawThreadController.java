@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.classes.Util;
 import com.example.service.AsyncServiceRunnable;
 
 import lombok.RequiredArgsConstructor;
@@ -24,8 +21,6 @@ public class RawThreadController {
 	// Spin off a runnable within a thread, use .join to block for completeion
 	@GetMapping("/example1")
 	public String example1() throws InterruptedException {
-		// Setup / logging
-		Instant start = Util.startLog("example1");
 
 		// Logic
 		Thread t = new Thread(new AsyncServiceRunnable());
@@ -33,8 +28,6 @@ public class RawThreadController {
 		t.join();
 		log.info("Completed thread {}", t.getName());
 
-		// Response / logging
-		Util.endLog("example1", start);
 
 		return "Success";
 	}
@@ -75,8 +68,6 @@ public class RawThreadController {
 	 */
 	@GetMapping("/example2")
 	public String example2() throws InterruptedException {
-		// Setup / logging
-		Instant start = Util.startLog("example2");
 
 		// Logic
 		List<Thread> threads = new ArrayList<>();
@@ -98,9 +89,6 @@ public class RawThreadController {
 			log.info("Completed thread {}", t.getName());
 		});
 		log.info("All threads completed!");
-
-		// Response / logging
-		Util.endLog("example2", start);
 
 		return "Success";
 	}

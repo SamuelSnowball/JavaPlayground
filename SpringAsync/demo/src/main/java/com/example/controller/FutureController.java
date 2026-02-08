@@ -1,14 +1,11 @@
 package com.example.controller;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.concurrent.Future;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.classes.Util;
 import com.example.service.MyFutureService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,17 +26,10 @@ public class FutureController {
 	*/
 	@GetMapping("/example1")
 	public String example1() throws Exception {
-		// Setup / logging
-		Instant start = Util.startLog("example1");
-
-
 		// Logic
         Future<String> result = myFutureService.process();
 		result.get(); // Block the controller thread and wait for completeion
 		// result.get(10, TimeUnit.SECONDS); // Would throw a timeout exception unless it had resolved in time
-
-		// Response / logging
-		Util.endLog("example1", start);
 
 		return "Success";
 	}
@@ -55,10 +45,6 @@ public class FutureController {
 	*/
 	@GetMapping("/example2")
 	public String example2() throws Exception {
-		// Setup / logging
-		Instant start = Util.startLog("example2");
-
-
 		// Logic
         Future<String> result = myFutureService.process();
 		while(!result.isDone()){
@@ -66,10 +52,6 @@ public class FutureController {
 			Thread.sleep(2000);
 		}
 		result.get(); // Block the controller thread and wait for completeion
-
-		// Response / logging
-		Util.endLog("example2", start);
-
 
 		return "Success";
 	}
