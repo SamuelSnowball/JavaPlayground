@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 class SpringSecurity5Config extends WebSecurityConfigurerAdapter {
 
-    private final CustomFilter customFilter;
+    // private final CustomFilter customFilter;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -30,7 +30,7 @@ class SpringSecurity5Config extends WebSecurityConfigurerAdapter {
                 .httpBasic();
         
         
-        // A different method to include a filter in the chain
+        // A different method to include a filter in the chain, in this demo it's configured within SecurityFilterChain
         // http.addFilterBefore(customFilter, BasicAuthenticationFilter.class);
     }
 

@@ -1,4 +1,6 @@
-Spring security 5
+# Spring security 5 #
+
+Example of creating a custom filter and inserting it into the Spring Boot filter chain.
 
 Spring Boot 2 defaults to Spring Security 5.
 Notably, we can also use Spring Security 6 in Spring Boot 2 by overriding the default version in the properties section. https://www.baeldung.com/spring-security-migrate-5-to-6
@@ -10,6 +12,7 @@ There are 2 ways to register your filter, the first via the HttpSecurity object 
 http.authorizeRequests()...
 http.addFilterBefore(customFilter, CustomAuthenticationFilter.class);
 ```
+
 And the second is to include it in the Filter chain via a bean:
 ```
     @Bean

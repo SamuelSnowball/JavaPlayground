@@ -21,7 +21,7 @@ import com.example.controller.MyController;
 @WebMvcTest(controllers = MyController.class)
 @ContextConfiguration(classes = {SecurityChainConfig.class, CustomFilter.class})
 @Import(MyController.class)
-public class MyControllerTest {
+class MyControllerTest {
     
     private MockMvc mockMvc;
 
@@ -37,9 +37,11 @@ public class MyControllerTest {
                              .addFilter(filter).build();
     }
 
-    // add a test without the requiredParameter
+    /*
+    No MockUser required as the endpoint is configured to be open
 
-    // No MockUser required as the endpoint is configured to be open
+    com.example.CustomFilter: CustomFilter running, required parameter was found... allowing request to proceedeed
+    */
     @Test
     void testCustomFilterGetUnsecured() throws Exception {
         mockMvc.perform(get("/")
@@ -47,6 +49,9 @@ public class MyControllerTest {
             .andExpect(status().isOk());
     }
 
+    /*
+    com.example.CustomFilter: CustomFilter running, required parameter was found... allowing request to proceed
+    */
     @Test
     @WithMockUser // to get past HTTP basic authentication
     void testCustomFilterGetSecured() throws Exception {
@@ -55,6 +60,9 @@ public class MyControllerTest {
             .andExpect(status().isOk());
     }
 
+    /*
+    com.example.CustomFilter: CustomFilter running, required parameter was found... allowing request to proceed
+    */
     @Test
     @WithMockUser // to get past HTTP basic authentication
     void testCustomFilterPost() throws Exception {
@@ -64,6 +72,9 @@ public class MyControllerTest {
             .andExpect(status().isOk());
     }
     
+    /*
+    com.example.CustomFilter: CustomFilter running, required parameter was not found! Denying request
+    */
     @Test
     @WithMockUser // to get past HTTP basic authentication
     void testCustomFilterPostIsDenied() throws Exception {

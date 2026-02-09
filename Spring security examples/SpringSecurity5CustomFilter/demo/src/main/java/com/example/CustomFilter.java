@@ -10,33 +10,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+If we are passed a query parameter called 'requiredParameter', then allow the request
+*/
 @Slf4j
-public class CustomFilter extends GenericFilterBean {
+public class CustomFilter extends OncePerRequestFilter {
 
     @Override
-    public void doFilter(
-            ServletRequest request,
-            ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        
-        String requiredParameter = request.getParameter("requiredParameter");
-        
-        log.info("Recieved requiredParameter was: {}", requiredParameter);
 
-        // If we are passed a query parameter called 'requiredParameter', then allow the request
-        if (requiredParameter != null && requiredParameter.length() > 0) {
-            chain.doFilter(request, response);
+        String requiredParameter = request.getParameter("requiredParameter");
+
+        if (requiredParameter != null && !requiredParameter.isEmpty()) {
+            log.info("CustomFilter running, required parameter was found... allowing request to proceed");
+            filterChain.doFilter(request, response);
+            return; // Very important!
         }
+
+        log.info("CustomFilter running, required parameter was not found! Denying request");
 
         // Otherwise deny the request
         httpServletResponse.setStatus(HttpStatus.FORBIDDEN.value());
-        return;
     }
 }

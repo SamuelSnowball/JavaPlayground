@@ -13,8 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity // what does this do? Apparently it is included by default when using Spring
-                   // boot
+@EnableWebSecurity // Turns on Spring Security’s web security infrastructure and allows you to provide your own SecurityFilterChain bean.
 @EnableMethodSecurity // The new way to enable method level security
 class SpringSecurity6Config {
 

@@ -1,4 +1,7 @@
-Spring security 6
+# Spring security 6 #
+
+Example of creating a custom filter and inserting it into the Spring Boot filter chain.
+
 Requires at least Java version 17 and uses the jakarta namespace. We have migrated the javax.servlet imports to jakarta.servlet.
 Spring Boot 3 defaults to Spring Security 6.
 Notably, we can also use Spring Security 6 in Spring Boot 2 by overriding the default version in the properties section. https://www.baeldung.com/spring-security-migrate-5-to-6
