@@ -1,11 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.service.RestClientServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.190 s <<< FAILURE! -- in com.example.service.RestClientServiceTest
-com.example.service.RestClientServiceTest.testCallGoogle -- Time elapsed: 0.040 s <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "com.example.service.RestClientService.callGoogle()" because "this.restClientService" is null
-	at com.example.service.RestClientServiceTest.testCallGoogle(RestClientServiceTest.java:20)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.754 s -- in com.example.service.RestClientServiceTest

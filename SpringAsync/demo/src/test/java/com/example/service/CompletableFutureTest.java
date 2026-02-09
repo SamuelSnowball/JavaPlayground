@@ -8,11 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 Not really testing the functionality it just executes the methods, 
 it's an easy way to view the logs and see the threads that are running the different parts of the code.
 */
-@SpringBootTest
 class CompletableFutureTest {
 
-    @Autowired
-    private CompletableFutureService completableFutureService;
+	private ExampleService exampleService = new ExampleService();
+    private CompletableFutureService completableFutureService = new CompletableFutureService(exampleService);
 
     // Not mocking exampleService as I want to use it..!
 

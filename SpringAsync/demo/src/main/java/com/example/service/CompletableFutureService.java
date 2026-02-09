@@ -22,7 +22,6 @@ Executing it sync:
 Executing it async:
 	CompletableFuture<String> future = CompletableFuture.supplyAsync(supplier);
 */
-@Service
 @Slf4j
 @RequiredArgsConstructor
 public class CompletableFutureService {
