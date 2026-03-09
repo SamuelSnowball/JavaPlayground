@@ -75,13 +75,8 @@ public class CompletableFutureService {
 		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> { // Run this code asynchronously
 			log.info("Task told to run async, executed on thread: " + Thread.currentThread().getName());
 		}).thenRun(() -> {
-			log.info("Task told to run sync, executed on thread: " + Thread.currentThread().getName()); // No guarantee
-																										// this runs on
-																										// the same
-																										// thread as the
-																										// previous
-																										// stage, but it
-																										// might
+			// No guarantee this runs on the same thread as the previous stage, but it might
+			log.info("Task told to run sync, executed on thread: " + Thread.currentThread().getName()); 
 		});
 
 		// Block until the future is complete
