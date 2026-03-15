@@ -1,5 +1,7 @@
 
 # Commands #
+docker compose up --build
+cd demo && mvn org.jooq:jooq-codegen-maven:generate
 cd demo && mvn spring-boot:run
 
 # Adminer connection details #

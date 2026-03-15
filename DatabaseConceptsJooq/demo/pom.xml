@@ -62,6 +62,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- OpenAI Java SDK -->
+        <dependency>
+            <groupId>com.openai</groupId>
+            <artifactId>openai-java</artifactId>
+            <version>4.26.0</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
