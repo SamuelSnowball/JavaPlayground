@@ -1,0 +1,14 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.format.settings": {
+        "url": ".vscode/java-formatter.xml",
+        "profile": "ExtendedLineLength"
+    },
+    "java.format.comments.enabled": true,
+    "[java]": {
+        "editor.rulers": [180],
+        "editor.wordWrapColumn": 180
+    },
+    "java.format.onType.enabled": true,
+    "java.format.onSave.enabled": false
+}
