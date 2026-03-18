@@ -51,6 +51,9 @@ public class ThreadService {
         threads.add(t3);
 
         threads.stream().forEach(t -> t.start());
+
+        // AtomicInteger here actually isn't required, as it's being incremented 
+        // in a single thread, but would be required if sharing state across threads.
         AtomicInteger counter = new AtomicInteger(1); // Thread safe counter
 
         threads.stream().forEach(t -> {

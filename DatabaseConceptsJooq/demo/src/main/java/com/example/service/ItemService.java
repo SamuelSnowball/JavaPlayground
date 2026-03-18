@@ -8,11 +8,12 @@ import com.example.jooq.tables.records.ItemsRecord;
 
 import lombok.extern.slf4j.Slf4j;
 
+import static com.example.jooq.tables.Items.ITEMS;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static com.example.jooq.tables.Items.ITEMS;
 
 /**
  * Service that uses jOOQ's DSLContext to interact with the items table.
@@ -63,9 +64,10 @@ public class ItemService {
         log.info("Cleared items table");
     }
 
-    public void logItemTableSize() {
+    public int getItemTableSize() {
         int count = dsl.selectCount().from(ITEMS).fetchOneInto(Integer.class);
         log.info("Current items table size: {}", count);
+        return count;
     }
 
     /**

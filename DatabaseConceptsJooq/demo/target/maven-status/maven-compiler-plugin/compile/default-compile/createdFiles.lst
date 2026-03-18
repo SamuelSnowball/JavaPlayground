@@ -1,0 +1,6 @@
+com\example\jooq\DefaultCatalog.class
+com\example\jooq\Keys.class
+com\example\jooq\Supermarket.class
+com\example\jooq\tables\records\ItemsRecord.class
+com\example\jooq\tables\Items.class
+com\example\jooq\Tables.class
